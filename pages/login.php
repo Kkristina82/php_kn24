@@ -1,61 +1,47 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?= htmlspecialchars($title ?? 'Сторінка', ENT_QUOTES, 'UTF-8') ?></title>
-    <link rel="stylesheet" href="./styles/style.css">
-    <script src="./scripts/script.js"></script>
-    <!-- Favicon базовий -->
-    <link rel="icon" href="./images/icons/favicon.ico" sizes="any">
-
-    <!-- PNG-іконки для браузерів -->
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/icons/favicon-16x16.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./images/icons/favicon-32x32.png">
-
-    <!-- Apple Touch Icon (для iOS / iPadOS) -->
-    <link rel="apple-touch-icon" sizes="180x180" href="./images/icons/apple-touch-icon.png">
-
-    <!-- Android / PWA -->
-    <link rel="manifest" href="./images/icons/site.webmanifest">
-
-    <!-- Тема і колір плитки для Windows -->
-    <meta name="theme-color" content="#ffffff">
-    <meta name="msapplication-TileColor" content="#ffffff">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><?php echo $title; ?></title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/style.css">
 </head>
-<body>
-
-<?php
-    // Опрацьовуємо нашу форму
-    $login = '';
-    $password  = '';
-    // Перевіряємо, що запит дійсно POST
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        // Отримуємо значення змінних
-        $login = trim($_POST['login'] ?? '');
-        $password  = trim($_POST['password'] ?? '');
-    }
-?>
-
-    <h2>Нижче у нас форма, яка буде передавати дані на сервер методом POST</h2>
-    <form method="POST" action="">
-        <label for="login"></label>
-        <input 
-            type="text" 
-            name="login" 
-            id="login" 
-            placeholder="login" 
-            required
-            />
-        <label for="password"></label>
-        <input 
-            type="password" 
-            name="password" 
-            id="password" 
-            placeholder="password" 
-            required
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+  <div class="w-full max-w-md bg-white p-8 rounded-lg shadow-md">
+    <h2 class="text-2xl font-bold mb-6 text-center">Вхід</h2>
+    <form>
+      <div class="mb-4">
+        <label class="block text-gray-700 text-sm font-medium mb-2" for="email">Електронна пошта</label>
+        <input
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          type="email"
+          id="email"
+          placeholder="email@domain.com"
+          required
         />
-        <input type="submit" value="Авторизуватись">
+      </div>
+
+      <div class="mb-6">
+        <label class="block text-gray-700 text-sm font-medium mb-2" for="password">Пароль</label>
+        <input
+          class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+          type="password"
+          id="password"
+          placeholder="********"
+          required
+        />
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 transition duration-200"
+      >
+        Увійти
+      </button>
     </form>
+  </div>
+    <script src="/scripts/script.js"></script>
 </body>
 </html>
